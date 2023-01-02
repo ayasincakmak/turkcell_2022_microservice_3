@@ -1,5 +1,5 @@
 package com.works.utils;
 
 public enum REnum {
-    status, result, message, errors;
+    status, result, message, errors, server, sessionID;
 }

@@ -21,4 +21,9 @@ public class AccountRestController {
         return accountService.register(account);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity login(@Valid @RequestBody Account account) {
+        return accountService.login(account);
+    }
+
 }
