@@ -17,6 +17,7 @@ import java.util.Optional;
 public class AccountService {
 
     final AccountRepository accountRepository;
+    final TinkEncDec tinkEncDec;
 
     public ResponseEntity register(Account account) {
         Optional<Account> optionalAccount = accountRepository.findByEmailEqualsIgnoreCase(account.getEmail());
@@ -26,6 +27,9 @@ public class AccountService {
             hm.put(REnum.errors, "Email use");
             return new ResponseEntity(hm, HttpStatus.BAD_REQUEST);
         }else {
+            String newPass = tinkEncDec.encrypt(account.getPassword());
+            account.setPassword(newPass);
+            System.out.println(newPass);
             accountRepository.save(account);
             hm.put(REnum.status, true);
             hm.put(REnum.result, account);

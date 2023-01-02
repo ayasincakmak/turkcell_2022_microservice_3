@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class AccountRestController {
@@ -15,7 +17,7 @@ public class AccountRestController {
     final AccountService accountService;
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody Account account) {
+    public ResponseEntity register(@Valid @RequestBody Account account) {
         return accountService.register(account);
     }
 
