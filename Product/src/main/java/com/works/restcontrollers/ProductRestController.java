@@ -23,4 +23,9 @@ public class ProductRestController {
         return productService.save(product);
     }
 
+    @PostMapping("/find/{pid}")
+    public ResponseEntity find(@PathVariable Long pid) {
+        return productService.findID(pid);
+    }
+
 }
