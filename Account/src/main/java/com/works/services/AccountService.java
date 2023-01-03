@@ -4,6 +4,7 @@ import com.works.entities.Account;
 import com.works.repositories.AccountRepository;
 import com.works.utils.REnum;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class AccountService {
+
+    @Value("${sample.data}")
+    private String sample;
 
     final AccountRepository accountRepository;
     final TinkEncDec tinkEncDec;
@@ -72,6 +76,7 @@ public class AccountService {
                 String sessionID = req.getSession().getId();
                 hm.put(REnum.sessionID, sessionID);
                 hm.put(REnum.server, server);
+                System.out.println("sample: " + sample);
                 return new ResponseEntity(hm, HttpStatus.OK);
             }
         }
