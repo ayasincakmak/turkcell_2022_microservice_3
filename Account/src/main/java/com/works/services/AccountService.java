@@ -4,6 +4,7 @@ import com.works.entities.Account;
 import com.works.repositories.AccountRepository;
 import com.works.utils.REnum;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AccountService {
 
     @Value("${sample.data}")
@@ -51,6 +53,7 @@ public class AccountService {
 
 
     public ResponseEntity login( Account account ) {
+        log.info("Login Action");
         Optional<Account> optionalAccount = accountRepository.findByEmailEqualsIgnoreCase(account.getEmail());
         Map<REnum, Object> hm = new LinkedHashMap<>();
         if (optionalAccount.isPresent() ) {

@@ -3,6 +3,9 @@ package com.works.services;
 import com.works.entities.Product;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,9 +16,11 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductService {
 
     final ProductRepository productRepository;
+    final Tracer tracer;
 
     public ResponseEntity save(Product product) {
         Map<String, Object> hm = new LinkedHashMap<>();
@@ -26,6 +31,7 @@ public class ProductService {
 
 
     public ResponseEntity list() {
+        log.info("Product List");
         Map<String, Object> hm = new LinkedHashMap<>();
         hm.put("status", true);
         hm.put("result", productRepository.findAll());

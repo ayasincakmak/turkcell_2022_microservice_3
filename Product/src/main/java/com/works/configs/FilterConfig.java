@@ -6,6 +6,8 @@ import com.works.props.AccountData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +29,7 @@ public class FilterConfig implements Filter {
     final DiscoveryClient discoveryClient;
     final RestTemplate restTemplate;
     final ObjectMapper objectMapper;
+    final Tracer tracer;
 
     @Override
     public void init(javax.servlet.FilterConfig filterConfig) throws ServletException {
@@ -38,6 +41,12 @@ public class FilterConfig implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
+
+        Span span = tracer.currentSpan();
+        String spanId = span.context().spanId();
+        String parentId = span.context().parentId();
+        res.setHeader("spanId", spanId);
+        res.setHeader("parentId", parentId);
 
         String url = req.getRequestURI();
         if (url.equals("/error")) {
