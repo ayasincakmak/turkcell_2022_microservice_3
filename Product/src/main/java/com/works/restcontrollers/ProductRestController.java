@@ -35,8 +35,13 @@ public class ProductRestController {
     }
 
     @PostMapping("/register")
-    public Object register(@RequestBody Account account) {
+    public ResponseEntity register(@RequestBody Account account) {
         return productService.register(account);
+    }
+
+    @GetMapping("/news")
+    public ResponseEntity news() {
+        return productService.news();
     }
 
 }

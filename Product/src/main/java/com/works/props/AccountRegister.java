@@ -8,37 +8,28 @@ import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Result {
+public class AccountRegister {
 
-    private Integer aid;
-    private String email;
-    private String password;
+    private Boolean status;
+    private Result result;
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Integer getAid() {
-        return aid;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setAid(Integer aid) {
-        this.aid = aid;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public String getEmail() {
-        return email;
+    public Result getResult() {
+        return result;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setResult(Result result) {
+        this.result = result;
     }
 
     public Map<String, Object> getAdditionalProperties() {

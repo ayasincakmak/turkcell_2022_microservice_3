@@ -4,8 +4,11 @@ import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.works.entities.Product;
 import com.works.props.Account;
+import com.works.props.AccountRegister;
+import com.works.props.NewsData;
 import com.works.repositories.ProductRepository;
 import com.works.usefeign.IAccountFeign;
+import com.works.usefeign.INewsFeign;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.Span;
@@ -28,6 +31,7 @@ public class ProductService {
     final Tracer tracer;
     final RestTemplate restTemplate;
     final IAccountFeign iAccountFeign;
+    final INewsFeign iNewsFeign;
 
     public ResponseEntity save(Product product) {
         Map<String, Object> hm = new LinkedHashMap<>();
@@ -72,7 +76,30 @@ public class ProductService {
     }
 
 
-    public Object register(Account account) {
-        return iAccountFeign.register(account);
+    public ResponseEntity register(Account account) {
+        try {
+            AccountRegister register = iAccountFeign.register(account);
+            return new ResponseEntity(register, HttpStatus.OK);
+        }catch (Exception ex) {
+            Map<String, Object> hm = new LinkedHashMap<>();
+            hm.put("status", false);
+            hm.put("message", account.getEmail() + " use");
+            return new ResponseEntity(hm, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public ResponseEntity news() {
+        String country = "tr";
+        String category = "business";
+        String apiKey = "38a9e086f10b445faabb4461c4aa71f8";
+        try {
+            NewsData newsData = iNewsFeign.news(country, category, apiKey);
+            return new ResponseEntity(newsData, HttpStatus.OK);
+        }catch (Exception ex) {
+            Map<String, Object> hm = new LinkedHashMap<>();
+            hm.put("status", false);
+            hm.put("message", ex.getMessage());
+            return new ResponseEntity(hm, HttpStatus.NOT_FOUND);
+        }
     }
 }
