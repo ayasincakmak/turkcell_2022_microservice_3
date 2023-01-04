@@ -1,6 +1,7 @@
 package com.works.restcontrollers;
 
 import com.works.entities.Product;
+import com.works.props.Account;
 import com.works.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,11 @@ public class ProductRestController {
     @GetMapping("/allProduct")
     public ResponseEntity allProduct() {
         return productService.allProd();
+    }
+
+    @PostMapping("/register")
+    public Object register(@RequestBody Account account) {
+        return productService.register(account);
     }
 
 }

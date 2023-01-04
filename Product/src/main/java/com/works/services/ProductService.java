@@ -3,7 +3,9 @@ package com.works.services;
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.works.entities.Product;
+import com.works.props.Account;
 import com.works.repositories.ProductRepository;
+import com.works.usefeign.IAccountFeign;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.Span;
@@ -25,6 +27,7 @@ public class ProductService {
     final ProductRepository productRepository;
     final Tracer tracer;
     final RestTemplate restTemplate;
+    final IAccountFeign iAccountFeign;
 
     public ResponseEntity save(Product product) {
         Map<String, Object> hm = new LinkedHashMap<>();
@@ -66,5 +69,10 @@ public class ProductService {
         hm.put("status", false);
         hm.put("error", "Dummyjson Server DOWN");
         return new ResponseEntity(hm, HttpStatus.NOT_FOUND);
+    }
+
+
+    public Object register(Account account) {
+        return iAccountFeign.register(account);
     }
 }
