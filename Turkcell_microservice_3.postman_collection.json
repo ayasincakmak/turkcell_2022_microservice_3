@@ -97,7 +97,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"mehmet@mail.com\",\n    \"password\": \"12345\"\n}",
+					"raw": "{\n    \"email\": \"ali@mail.com\",\n    \"password\": \"12345\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -350,6 +350,84 @@
 			]
 		},
 		{
+			"name": "AllProduct List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "ali@mail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/product/allProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"product",
+						"allProduct"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product List",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/product/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product",
+								"list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 03 Jan 2023 06:41:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"result\": [\n        {\n            \"pid\": 1,\n            \"title\": \"iPad\",\n            \"price\": 17000\n        },\n        {\n            \"pid\": 2,\n            \"title\": \"iPhone\",\n            \"price\": 27000\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
 			"name": "Cloud Encrypt",
 			"request": {
 				"method": "POST",
@@ -429,6 +507,366 @@
 					],
 					"cookie": [],
 					"body": "9a15dbfaed6c75d669c4cb1e847ee7b03eb3426c8693106c088c2470bc8f33ef0e61e698f2ea16f4e185a79598fec9ba039e046bb29c09520f4a8fa2b20eb788"
+				}
+			]
+		},
+		{
+			"name": "Cloud Decrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "9a15dbfaed6c75d669c4cb1e847ee7b03eb3426c8693106c088c2470bc8f33ef0e61e698f2ea16f4e185a79598fec9ba039e046bb29c09520f4a8fa2b20eb788"
+				},
+				"url": {
+					"raw": "http://localhost:8888/decrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"decrypt"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cloud Decrypt",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "9a15dbfaed6c75d669c4cb1e847ee7b03eb3426c8693106c088c2470bc8f33ef0e61e698f2ea16f4e185a79598fec9ba039e046bb29c09520f4a8fa2b20eb788"
+						},
+						"url": {
+							"raw": "http://localhost:8888/decrypt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"decrypt"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 03 Jan 2023 11:45:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Product Find",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ali@mail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/product/find/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"product",
+						"find",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product Find",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ali@mail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/product/find/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product",
+								"find",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 03 Jan 2023 12:25:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "false"
+				}
+			]
+		},
+		{
+			"name": "Product Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ali@mail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"alil@mail.com\",\n    \"password\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/product/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"product",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "ali@mail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alil@mail.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/product/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "spanId",
+							"value": "b4ad58c6ac36fe66"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Jan 2023 10:31:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"result\": {\n        \"aid\": 13,\n        \"email\": \"alil@mail.com\",\n        \"password\": \"WS0lwpAmw7rCj8KIwrnDk8Ose8KrwrbDtHrDhyAhUSpVw4vDgSTCmsKiw5NUTcK8UMOb\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Product News",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "ali@mail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "12345",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/product/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"product",
+						"news"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product News",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ali@mail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/product/news",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product",
+								"news"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "spanId",
+							"value": "433287e3541ec5e8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Jan 2023 10:59:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"totalResults\": 70,\n    \"articles\": [\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Fotomac.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"www.fotomac.com.tr\",\n            \"title\": \"OCAK KİRA ARTIŞ ORANI HESAPLAMA | 2023 Ocak ayı kira artış oranı ne kadar? Kira artış oranı nasıl hesaplanır? - Fotomaç\",\n            \"description\": \"TÜİK Ocak ayı enflasyon verilerini açıkladı. Tüketici Fiyat Endeksi ve Yurt içi Üretici Fiyat Endeki TÜFE ve YI-ÜFE rakamlarının belli olmasının ardından en çok merak edilen detaylardan biri de kira artış oranı oldu. Ocak ayı kira artış oranını merak edenler …\",\n            \"url\": \"https://www.fotomac.com.tr/haberler/2023/01/03/ocak-kira-artis-orani-hesaplama-2023-ocak-ayi-kira-artis-orani-ne-kadar-kira-artis-orani-nasil-hesaplanir\",\n            \"urlToImage\": \"https://iaftm.tmgrup.com.tr/002bdc/632/314/0/46/792/440?u=https://iftm.tmgrup.com.tr/2023/01/03/ocak-kira-artis-orani-hesaplama-2023-ocak-ayi-kira-artis-orani-ne-kadar-kira-artis-orani-nasil-hesaplanir-1672728631378.jpeg\",\n            \"publishedAt\": \"2023-01-04T08:20:00Z\",\n            \"content\": \"2023 OCAK KRA ARTI ORANI HESAPLAMA |Milyonlarca vatanda, ne kadar kira ödeyeceini ve kirasna ne kadar zam geldiini aratyor. Yln son verileriyle birlikte kira art oran da belli olurken TÜK'in enflasyo… [+1047 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hurriyet.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Gaye Kobal\",\n            \"title\": \"Gram altın dün rekor tazeledi! Yükseliş devam eder mi? Uzmanlar 2023 beklentilerini anlattı... - Hürriyet\",\n            \"description\": \"Ons altının son 6 ayın en yüksek seviyesine gelmesi gram altına yaradı. Altının gram fiyatı 3 Ocak’ta yeni bir rekor kırarak 1114 TL seviyelerine yükseldi. Peki gram altında yükseliş devam eder mi? Uzmanlar yanıtladı...\",\n            \"url\": \"https://www.hurriyet.com.tr/ekonomi/gram-altin-rekor-tazeledi-yukselis-devam-eder-mi-42198113\",\n            \"urlToImage\": \"https://i4.hurimg.com/i/hurriyet/75/1200x675/63b437f44e3fe1171c7cc3fb.jpg\",\n            \"publishedAt\": \"2023-01-04T06:53:00Z\",\n            \"content\": \"p&gt;Gram altnn dün sabah saatlerinden itibaren yükseli göstermesiyle birlikte gözler altn fiyatlarna çevrildi. 1850 dolara kadar yükseli gösteren ons altn haberin yazld esnada 1847 dolar seviyelerin… [+4917 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Haberturk.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Habertürk\",\n            \"title\": \"A101'de fırsat üstüne fırsat! 5 Ocak 2023 A101 aktüel ürünler kataloğu indirimli ürünler listesi yayınlandı! - Habertürk\",\n            \"description\": \"2023 yılının ilk kataloğu A101 tarafından yayınlandı. 5 Ocak tarihinde A101'e küçük ev aletleri ve spor malzemeleri gelecek. Bunun yanında raflarda, kadife kaymaz halı, piknik masası, su geçirmez alez, pilates topu, porselen ürünler gibi birçok ürün yer alaca…\",\n            \"url\": \"https://www.haberturk.com/a101-de-firsat-ustune-firsat-5-ocak-2023-a101-aktuel-urunler-katalogu-indirimli-urunler-listesi-yayinlandi-3553021-ekonomi\",\n            \"urlToImage\": \"https://im.haberturk.com/2023/01/03/ver1672815086/3553021_1200x627.jpg\",\n            \"publishedAt\": \"2023-01-04T06:51:26Z\",\n            \"content\": \"Deerli Haberturk.com okurlar.Haberturk.com ekibi olarak Türkiyede ve dünyada yaanan ve haber deeri tayan her türlü gelimeyi sizlere en hzl, en objektif ve en doyurucu ekilde ulatrmak için çalyoruz. Y… [+2178 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Mynet.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Mynet.com\",\n            \"title\": \"Matrah güncellemesiyle fiyatlar düşmüştü yeni yıla zamla girildi! Otomobil fiyatları için ÖTV beklentisine son noktayı koydu: Kim yapıyor bunu anlamadım! - Mynet\",\n            \"description\": \"Sıfır otomobil fiyatlarına yeni yılla birlikte ortalama yüzde 5’lik zam öngörülürken, 2023 model araçların piyasaya girmesiyle ayın ortalarında ikinci bir güncelleme yapılacağı öğrenildi. Araç fiyatlarındaki yükseliş sürerken ÖTV güncellemesi beklentileri yen…\",\n            \"url\": \"https://finans.mynet.com/haber/detay/otomotiv/matrah-guncellemesiyle-fiyatlar-dusmustu-yeni-yila-zamla-girildi-otomobil-fiyatlari-icin-otv-beklentisine-son-noktayi-koydu-kim-yapiyor-bunu-anlamadim/458250/\",\n            \"urlToImage\": \"https://imgrosetta.mynet.com.tr/file/16317261/16317261-700x400.jpg\",\n            \"publishedAt\": \"2023-01-04T06:35:57Z\",\n            \"content\": \"Geçtiğimiz yıl bazı aylar iki kez olmak üzere sıfır otomobil fiyatlarında her ay artış yaşandı. Çip krizi, tedarik sorusunu ve döviz kurlarındaki yükseliş ile yükselen fiyatlar karşısında 400 bin lir… [+3932 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Sozcu.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Sözcü\",\n            \"title\": \"Küresel piyasalar Fed’in toplantı tutanaklarına odaklandı - Sözcü\",\n            \"description\": \"Küresel piyasalar Fed’in toplantı tutanaklarına odaklandı - Küresel piyasalar, resesyon ve enflasyon ikilemi arasında yön bulmakta zorlanırken, bugün gözler ABD Merkez Bankası'nın toplantı tutanaklarına çevrildi.\",\n            \"url\": \"https://www.sozcu.com.tr/2023/finans/kuresel-piyasalar-fedin-toplanti-tutanaklarina-odaklandi-7545098/\",\n            \"urlToImage\": \"https://i.sozcucdn.com/wp-content/uploads/2023/01/04/depophotos_17424820-1.jpeg?w=1200&h=675&mode=crop\",\n            \"publishedAt\": \"2023-01-04T06:25:56Z\",\n            \"content\": \"Küresel piyasalar, resesyon ve enflasyon ikilemi arasnda yön bulmakta zorlanrken, bugün gözler ABD Merkez Bankas'nn toplant tutanaklarna çevrildi.\\r\\nYaynlanma: 09:25 - 04 Ocak 2023 Güncellenme:10:20 -… [+5307 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Takvim.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"www.takvim.com.tr\",\n            \"title\": \"İslam Memiş, gram altının patlama yapacağı tarihi açıkladı! Altın alanlar, satanlar mest olacak! İşte 14-18-22 ve 24 ayar altın bilezik fiyatları - Takvim\",\n            \"description\": \"Rekor üzerine rekor kıran gram altın hakkında açıklamalar peş peşe geliyor. Altın yatırımcılarının radarına giren isimler arasında bulunan İslam Memiş, gram altın fiyatlarının daha da yükseleceğini belirterek, 1 gram bile altını olan herkesi mest edecek bir a…\",\n            \"url\": \"https://www.takvim.com.tr/galeri/ekonomi/islam-memis-gram-altinin-patlama-yapacagi-tarihi-acikladi-altin-alanlar-satanlar-mest-olacak-iste-14-18-22-ve-24-ayar-altin-bilezik-fiyatlari\",\n            \"urlToImage\": \"https://iatkv.tmgrup.com.tr/6b11a9/600/314/0/0/1280/668?u=https%3a%2f%2fitkv.tmgrup.com.tr%2falbum%2f2023%2f01%2f04%2fislam-memis-gram-altinin-patlama-yapacagi-tarihi-acikladi-altin-alanlar-satanlar-mest-olacak-iste-14-18-22-ve-1672813177841.jpg\",\n            \"publishedAt\": \"2023-01-04T06:20:00Z\",\n            \"content\": \"Altn ve Para Piyasalar Uzman slam Memi, yapt açklamada Ocak aynda altn fiyatlarnn yüzde 50 artacan belirterek, altnn rekor seviyelere geleceini de müjdeledi. Yatrmclarn en çok tercih ettii yatrm araç… [+265 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Sondakika.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"https://www.facebook.com/sondakikacom\",\n            \"title\": \"Tezgahlarda yerini alan kirazın fiyatı gram altını solladı - Son Dakika\",\n            \"description\": \"Türkiye'de hasadına mayıs ayında başlanması beklenen kiraz, Güney Amerika ülkesi Şili'den gelerek tezgahlarda yerini alırken bin 250 liralık fiyatı ile bin 110 lira civarında satılan gram altını geçti.\",\n            \"url\": \"https://www.sondakika.com/ekonomi/haber-kiraz-gram-altini-solladi-15537979/\",\n            \"urlToImage\": \"https://i2.sdacdn.com/haber/2023/01/04/kiraz-gram-altini-solladi-15538027_7740_amp.jpg\",\n            \"publishedAt\": \"2023-01-04T06:19:25Z\",\n            \"content\": \"zmir'de yaklak 350 çeit taze ve dondurulmu meyve sebzeyle tezgahn süsleyen manav Nizami Buran, Türkiye'de Mays aynda hasadna balanmas beklenen kiraz da herkesten önce sata sundu. Türkiye'de ilkbahar … [+916 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Mynet.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Mynet.com\",\n            \"title\": \"Dolar için 9 kurumdan 2023 tahmini! Hemen hepsi tek görüşte birleşti: Haziran sonrasına dikkat! - Mynet\",\n            \"description\": \"Yatırım bankaları 2023 dolar tahminlerini tek tek duyurdu. Geçtiğimiz yıl oldukça hareketli bir grafik çizen dolar için zayıf bir yıl beklentisi var. Bazı kurumlar aksini söylese de yılın ikinci yarısını işaret eden kurumlar enflasyonun gidişatı ve savaş gibi…\",\n            \"url\": \"https://finans.mynet.com/galeri/haber/detay/doviz/dolar-icin-9-kurumdan-2023-tahmini-hemen-hepsi-tek-goruste-birlesti-haziran-sonrasina-dikkat/458240/\",\n            \"urlToImage\": \"https://imgrosetta.mynet.com.tr/file/15923519/15923519-700x400.jpg\",\n            \"publishedAt\": \"2023-01-04T05:16:55Z\",\n            \"content\": \"BIST piyasalarnda oluan tüm verilere ait telif haklar tamamen BIST'e ait olup, bu veriler tekrar yaynlanamaz. Pay Piyasas, Borçlanma Araçlar Piyasas, Vadeli lem ve Opsiyon Piyasas verileri BIST kayna… [+983 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": \"google-news\",\n                \"name\": \"Google News\",\n                \"additionalProperties\": {}\n            },\n            \"author\": null,\n            \"title\": \"Günün önemli şirket haberleri 04/01/2023 - Borsagundem\",\n            \"description\": null,\n            \"url\": \"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vd3d3LmJvcnNhZ3VuZGVtLmNvbS9oYWJlci9ndW51bi1vbmVtbGktc2lya2V0LWhhYmVybGVyaS0wNDAxMjAyMy8xNzEzMTYx0gFUaHR0cHM6Ly93d3cuYm9yc2FndW5kZW0uY29tL2FtcC9oYWJlci9ndW51bi1vbmVtbGktc2lya2V0LWhhYmVybGVyaS0wNDAxMjAyMy8xNzEzMTYx?oc=5\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-01-04T04:45:35Z\",\n            \"content\": null,\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Haberturk.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Habertürk\",\n            \"title\": \"Son dakika: FTX'in eski CEO'su Sam Bankman-Fried iddiaları reddetti! - Habertürk\",\n            \"description\": \"Kripto para borsası FTX'in eski CEO'su Sam Bankman-Fried dolandırıcılık iddialarını reddetti. 8 suçtan yargılanan Fried için 115 yıla kadar hapis alabileceği söyleniyor\",\n            \"url\": \"https://www.haberturk.com/son-dakika-ftx-in-eski-ceo-su-sam-bankman-fried-iddialari-reddetti-3553112\",\n            \"urlToImage\": \"https://im.haberturk.com/2023/01/04/ver1672814725/3553112_1200x627.jpg\",\n            \"publishedAt\": \"2023-01-04T04:36:58Z\",\n            \"content\": \"Deerli Haberturk.com okurlar.Haberturk.com ekibi olarak Türkiyede ve dünyada yaanan ve haber deeri tayan her türlü gelimeyi sizlere en hzl, en objektif ve en doyurucu ekilde ulatrmak için çalyoruz. Y… [+2178 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Mynet.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Mynet.com\",\n            \"title\": \"Vatandaşlar dikkat! Markette akılalmaz oyun: Son kullanma tarihi yıllar geçmiş ürünler de var, 'indirim' adı altında... - Mynet\",\n            \"description\": \"Market raflarında kurulan tuzak gözler önüne serildi. Marketteki 'etiket' oyunundan sonra şimdi de 'indirim' adı altında son kullanma tarihi geçmiş ürünlerin satıldığı ortaya çıktı. Hatta son kullanma tarihi yıllar geçmiş ürünler bile var.\",\n            \"url\": \"https://www.mynet.com/vatandaslar-dikkat-markette-akilalmaz-oyun-son-kullanma-tarihi-yillar-gecmis-urunler-de-var-indirim-adi-altinda-110107084333\",\n            \"urlToImage\": \"https://imgrosetta.mynet.com.tr/file/16316866/16316866-700x400.jpg\",\n            \"publishedAt\": \"2023-01-04T04:26:29Z\",\n            \"content\": \"Market raflarında vatandaşa kurulan akılalmaz bir tuzak ortaya çıkarıldı. Son kullanma tarihi birkaç gün değil, aylar hatta yıllar geçmiş ürünlerin özel indirim sloganıyla satıldığı gün yüzüne çıkarı… [+703 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Milliyet.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Milliyet.com.tr\",\n            \"title\": \"BUGÜN SATIŞTA! BİM 3-6 OCAK AKTÜEL KATALOG; BİM 3 Ocak kataloğunda hangi indirimli ürünler var? - Milliyet\",\n            \"description\": \"BİM mağazalarında her hafta Salı ve Cuma günleri mağazalarda satışa sunulan aktüel ürünler katalogları yayımlandı. Bu Salı BİM'de Makyaj malzemesi, Temizlik ve gıda ürünleri katalog'da yer alırken Cuma günü için yayımlanan katalog'da tek fiyat teknoloji ürünl…\",\n            \"url\": \"https://www.milliyet.com.tr/galeri/bim-3-6-ocak-aktuel-katalog-bim-aktuel-katalogunda-bu-hafta-hangi-indirimli-urunler-var-6881523\",\n            \"urlToImage\": \"https://i2.milimaj.com/i/milliyet/75/0x0/63b290d686b24754c86de02e.jpg\",\n            \"publishedAt\": \"2023-01-03T21:58:25Z\",\n            \"content\": \"Borcam by Paabahçe Sufle Kab / Kase (19,50 TL)\\r\\nBasmal Deirmen Tuzluk (19,50 TL)\\r\\nOkyanus Home Limon Press (19,50 TL)\\r\\nSilikon Hazneli Yalk (19,50 TL)\\r\\nTuruluk - Zeytinlik (19,50 TL)\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Karar.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": null,\n            \"title\": \"TC kimlik numarası olan herkes alacak! PTT'den 31.000 TL nakit para hamlesi! Tek şartla para hesapta! - KARAR\",\n            \"description\": \"PTT tarafından yapılan son dakika kampanya açıklaması acil nakit ihtiyacı olanlara sevindirdi. Bugün itibariyle başvuru yapanlar 30.000 TL'lik ödeme almaya hak kazanacak. Ödemeler, başvuru sahiplerinin kimlik numarasına göre yapılacak. İşte, PTT ödemesinin de…\",\n            \"url\": \"https://www.karar.com/hayat-haberleri/tc-kimlik-numarasi-olan-herkes-alacak-pttden-31-000-tl-nakit-para-1718154\",\n            \"urlToImage\": \"https://cdn.karar.com/news/1512556.jpg\",\n            \"publishedAt\": \"2023-01-03T21:45:00Z\",\n            \"content\": \"PTT tarafndan yaplan son dakika kampanya açklamas acil nakit ihtiyac olanlara sevindirdi. Bugün itibariyle bavuru yapanlar 30.000 TL'lik ödeme almaya hak kazanacak. Ödemeler, bavuru sahiplerinin kiml… [+773 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Birgun.net\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Birgün Gazetesi\",\n            \"title\": \"Biraya büyük zam - BirGün\",\n            \"description\": \"Tekel Bayileri Platformu (TBP) Başkanı Özgür Aybaş, sosyal medya hesabından yaptığı paylaşım ile yeni bira zammını duyurdu. Aybaş, şişe ve kutu biralara 10 TL,\",\n            \"url\": \"https://www.birgun.net/haber/biraya-buyuk-zam-416229\",\n            \"urlToImage\": \"https://static.birgun.net/resim/haber-detay-resim/2023/01/04/biraya-buyuk-zam-1109177-5.jpg\",\n            \"publishedAt\": \"2023-01-03T21:37:12Z\",\n            \"content\": null,\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Paramedya.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Editör\",\n            \"title\": \"İş Bankası borsada 3 milyar liralık hisse alacak! İşte o hisseler: - ParaMedya\",\n            \"description\": \"ParaMedya\",\n            \"url\": \"https://www.paramedya.com.tr/devami/84485/is-bankasi-borsada-3-milyar-liralik-hisse-alacak-iste-o-hisseler/\",\n            \"urlToImage\": \"https://www.paramedya.com.tr/wp-content/uploads/2022/12/Turkiye-Is-Bankasi-Genel-Mudurlugu.jpg\",\n            \"publishedAt\": \"2023-01-03T21:36:20Z\",\n            \"content\": \"Bankas, borsada ilem gören iecam, TSKB, Anadolu Hayat, Finansal Kiralama, GYO, Yatrm Menkul Deerler, Anadolu Sigorta, Giriim, Yatrm Ortakl ve TSKB GYOnun paylarnn almlaryla ilgili olarak Genel Müdürl… [+574 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Bozuktus.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": null,\n            \"title\": \"SON DAKİKA: Emeklinin Yüzünü Güldürecek Haber Bankalardan Geldi! 3 Maaş, Birden Ödenecek Anında ATM'den Verilecek... - Bozuktus\",\n            \"description\": \"Emekliler için büyük müjde verildi. Emekliye 2 ayrı kredi kampanyası veriliyor. Emekli maaşını belirtilen bankaya taşıyanlar için düşük vade ve faiz olanağı ile krediler sağlanırken, diğer kategoride olan emekliler için şartlar diğer müşteriler ile aynı.\",\n            \"url\": \"https://www.bozuktus.com/basin-bulteni/son-dakika-emeklinin-yuzunu-guldurecek-haber-bankalardan-geldi-3-maas-39231h\",\n            \"urlToImage\": \"https://www.bozuktus.com/d/news/40917.jpg\",\n            \"publishedAt\": \"2023-01-03T21:35:38Z\",\n            \"content\": \"Emekli vatandalar için bankalardan 2 ayr kredi kampanyas oluturuluyor. Maan bankaya tam olan vatandalar için düük vadeli ve faiz olanakl kredi destei salanrken, dier kategoride olan emekli vatandalar… [+1444 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Aydinlik.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Aydınlık\",\n            \"title\": \"Hyundai'den yeni yıl sürprizi! Sadece 335 bin TL... - Aydınlık Gazetesi\",\n            \"description\": \"Hyundai, Ocak 2023 fiyat listesini sürprizle duyurdu. Sıfır otomobil fiyat listesinde 335 bin TL'ye satışa sunulan otomobil sürücüleri heyecanlandıracak.\",\n            \"url\": \"https://www.aydinlik.com.tr/haber/hyundaiden-yeni-yil-surprizi-sadece-335-bin-tl-359390\",\n            \"urlToImage\": \"https://img.aydinlik.com.tr/rcman/Cw1280h720q95gc/storage/files/images/2023/01/04/hyundaiden-yeni-yil-surprizi-sadece-335-bin-tl-rKGU.jpg\",\n            \"publishedAt\": \"2023-01-03T21:20:00Z\",\n            \"content\": \"Hyundai'nin Ocak ayından itibaren ise güncellenen sıfır otomobil fiyatlarındaki listeler sonunda ortaya çıktı.Şehir içi kullanımda rahat ve konforlu bir deneyim sunan Hyundai i10 335 bin TL'den satış… [+712 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Karar.com\",\n                \"additionalProperties\": {}\n            },\n            \"author\": null,\n            \"title\": \"Ziraat Bankası kampanyayı patlattı! 250 TL nakit iade ediliyor! Bankkart'ı olanların bunu yapması yeterli! - KARAR\",\n            \"description\": \"Ziraat Bankası kampanyasında son günlere geldik. Düzenli alışveriş yaparsanız 250 TL'lik hediye bankkart lirasını hemen alacaksınız. İşte Ziraat Bankası alışveriş bonusu kampanyasının detayları...\",\n            \"url\": \"https://www.karar.com/hayat-haberleri/ziraat-bankasi-kampanyayi-patlatti-250-tl-nakit-iade-ediliyor-bankkarti-1718150\",\n            \"urlToImage\": \"https://cdn.karar.com/news/1512548.jpg\",\n            \"publishedAt\": \"2023-01-03T21:15:00Z\",\n            \"content\": \"Ziraat Bankas kampanyasnda son günlere geldik. Düzenli alveri yaparsanz 250 TL'lik hediye bankkart lirasn hemen alacaksnz. te Ziraat Bankas alveri bonusu kampanyasnn detaylar...Ziraat Bankas 250 TL h… [+1140 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Memurlar.net\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Memurlar.Net\",\n            \"title\": \"Kamu bankalarından yeni kredi paketi - Memurlar\",\n            \"description\": \"3 kamu bankasÄ± yeni bir kredi paketi hazÄ±rladÄ±. 'Tekno GiriÅ\\u009fimci Destek Kredisi' ile 6 ay ana para Ã¶demesiz 60 ay vadeli kredi saÄ\\u009flanacak. Firmalara 500 bin lira tutarÄ±nda kredi, yÄ±llÄ±k yÃ¼zde 13,5 sabit faizle verilecek.\",\n            \"url\": \"https://www.memurlar.net/haber/1051546/kamu-bankalarindan-yeni-kredi-paketi.html\",\n            \"urlToImage\": \"https://www.memurlar.net/common/news/images/1051546/headline.jpg\",\n            \"publishedAt\": \"2023-01-03T20:46:00Z\",\n            \"content\": \"Ziraat BankasÄ±, VakÄ±fBank ve Halkbank teknoloji alanÄ±nda faaliyet gÃ¶steren giriÅ\\u009fimcileri desteklemek amacÄ±yla yeni bir kredi paketini devreye alÄ±yor. \\r\\nAA muhabirinin aldÄ±Ä\\u009fÄ± bilgilere gÃ¶re… [+1270 chars]\",\n            \"additionalProperties\": {}\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Sozcu.com.tr\",\n                \"additionalProperties\": {}\n            },\n            \"author\": \"Sözcü\",\n            \"title\": \"ABD’de bankalara kripto uyarısı: Dikkatli olun - Sözcü\",\n            \"description\": \"ABD’de bankalara kripto uyarısı: Dikkatli olun - ABD'de bankacılık düzenleme kuruluşları, kripto varlıklarla ilgili riskler konusunda dikkatli olunması için bankalara uyarıda bulundu.\\r.\",\n            \"url\": \"https://www.sozcu.com.tr/2023/finans/kripto/abdde-bankalara-kripto-uyarisi-dikkatli-olun-7544957/\",\n            \"urlToImage\": \"https://i.sozcucdn.com/wp-content/uploads/2023/01/03/kripto-para-reuterss.jpeg?w=1200&h=675&mode=crop\",\n            \"publishedAt\": \"2023-01-03T20:39:57Z\",\n            \"content\": \"Yaynlanma: 23:39 - 03 Ocak 2023 Güncellenme:23:40 - 03 Ocak 2023\\r\\n<ul><li>Yazlar büyüt</li><li>Yazlar küçült</li><li>Standart boyut</li></ul>\\r\\nABD Merkez Bankas (Fed), ABD Federal Mevduat Sigorta Kur… [+1026 chars]\",\n            \"additionalProperties\": {}\n        }\n    ],\n    \"additionalProperties\": {}\n}"
 				}
 			]
 		}
