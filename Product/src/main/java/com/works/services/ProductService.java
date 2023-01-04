@@ -1,5 +1,7 @@
 package com.works.services;
 
+import com.netflix.hystrix.Hystrix;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.works.entities.Product;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,6 +24,7 @@ public class ProductService {
 
     final ProductRepository productRepository;
     final Tracer tracer;
+    final RestTemplate restTemplate;
 
     public ResponseEntity save(Product product) {
         Map<String, Object> hm = new LinkedHashMap<>();
@@ -31,7 +35,7 @@ public class ProductService {
 
 
     public ResponseEntity list() {
-        log.info("Product List");
+        // int i = 1 / 0;
         Map<String, Object> hm = new LinkedHashMap<>();
         hm.put("status", true);
         hm.put("result", productRepository.findAll());
@@ -45,5 +49,22 @@ public class ProductService {
         }else {
             return new ResponseEntity(false, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @HystrixCommand(fallbackMethod = "defaultMethod")
+    public ResponseEntity allProd() {
+        Map<String, Object> hm = new LinkedHashMap<>();
+        hm.put("status", true);
+        String url = "http://dummyjson.com/products";
+        String data = restTemplate.getForObject(url, String.class);
+        hm.put("result", data);
+        return new ResponseEntity(hm, HttpStatus.OK);
+    }
+
+    public ResponseEntity defaultMethod() {
+        Map<String, Object> hm = new LinkedHashMap<>();
+        hm.put("status", false);
+        hm.put("error", "Dummyjson Server DOWN");
+        return new ResponseEntity(hm, HttpStatus.NOT_FOUND);
     }
 }

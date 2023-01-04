@@ -49,7 +49,7 @@ public class FilterConfig implements Filter {
         res.setHeader("parentId", parentId);
 
         String url = req.getRequestURI();
-        if (url.equals("/error")) {
+        if (url.equals("/errorx")) {
             filterChain.doFilter(req, res);
         }else {
             boolean status = req.getSession().getAttribute("account") == null;
@@ -57,7 +57,7 @@ public class FilterConfig implements Filter {
             String email = req.getHeader("email");
             String password = req.getHeader("password");
             if (email == null || password == null) {
-                res.sendRedirect("/error");
+                res.sendRedirect("/errorx");
             }else {
 
 
@@ -81,7 +81,7 @@ public class FilterConfig implements Filter {
                         req.getSession().setAttribute("account", accountData);
                         filterChain.doFilter(req, res);
                     } else {
-                        res.sendRedirect("/error");
+                        res.sendRedirect("/errorx");
                     }
                 }
             }else {

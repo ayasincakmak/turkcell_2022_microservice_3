@@ -28,4 +28,9 @@ public class ProductRestController {
         return productService.findID(pid);
     }
 
+    @GetMapping("/allProduct")
+    public ResponseEntity allProduct() {
+        return productService.allProd();
+    }
+
 }

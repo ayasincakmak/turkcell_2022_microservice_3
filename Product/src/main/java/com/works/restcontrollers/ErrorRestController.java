@@ -11,7 +11,7 @@ import java.util.Map;
 @RestController
 public class ErrorRestController {
 
-    @GetMapping("/error")
+    @GetMapping("/errorx")
     public ResponseEntity error() {
         Map<String, Object> hm = new LinkedHashMap<>();
         hm.put("status", false);
