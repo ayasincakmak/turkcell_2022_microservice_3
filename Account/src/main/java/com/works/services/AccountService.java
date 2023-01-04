@@ -1,6 +1,8 @@
 package com.works.services;
 
+import com.google.gson.Gson;
 import com.works.entities.Account;
+import com.works.props.JmsData;
 import com.works.repositories.AccountRepository;
 import com.works.utils.REnum;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +35,7 @@ public class AccountService {
     final TinkEncDec tinkEncDec;
     final HttpServletRequest req;
     final DiscoveryClient discoveryClient;
+    final JmsTemplate jmsTemplate;
 
     public ResponseEntity register(Account account) {
         Optional<Account> optionalAccount = accountRepository.findByEmailEqualsIgnoreCase(account.getEmail());
@@ -80,6 +84,10 @@ public class AccountService {
                 hm.put(REnum.sessionID, sessionID);
                 hm.put(REnum.server, server);
                 System.out.println("sample: " + sample);
+                JmsData jmsData = new JmsData( ac.getAid().intValue() , ac.getEmail());
+                Gson gson = new Gson();
+                String stData = gson.toJson(jmsData);
+                jmsTemplate.convertAndSend(stData);
                 return new ResponseEntity(hm, HttpStatus.OK);
             }
         }
